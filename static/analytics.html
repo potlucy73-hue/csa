@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - CDMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar (same as dashboard.html) -->
+        <aside class="w-64 bg-blue-800 text-white hidden md:flex flex-col">
+            <!-- Sidebar content same as dashboard.html -->
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <h1 class="text-2xl font-bold text-gray-800">Analytics Dashboard</h1>
+                    <div class="flex space-x-4">
+                        <select class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Last 3 Months</option>
+                            <option>Last Year</option>
+                            <option>Custom Range</option>
+                        </select>
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-download mr-2"></i>Export Report
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-500 text-sm font-medium">Total Extractions</h3>
+                            <span class="flex items-center text-green-500 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>12.5%
+                            </span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-3xl font-bold text-gray-800">24,521</span>
+                            <span class="text-gray-500 text-sm ml-2">carriers</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-500 text-sm font-medium">Average Success Rate</h3>
+                            <span class="flex items-center text-green-500 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>2.3%
+                            </span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-3xl font-bold text-gray-800">98.7%</span>
+                            <span class="text-gray-500 text-sm ml-2">success</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-500 text-sm font-medium">API Response Time</h3>
+                            <span class="flex items-center text-red-500 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>5.1%
+                            </span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-3xl font-bold text-gray-800">245</span>
+                            <span class="text-gray-500 text-sm ml-2">ms avg</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-500 text-sm font-medium">Active Users</h3>
+                            <span class="flex items-center text-green-500 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>8.4%
+                            </span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-3xl font-bold text-gray-800">182</span>
+                            <span class="text-gray-500 text-sm ml-2">users</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Extraction Trends -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Extraction Trends</h3>
+                        <canvas id="extractionTrends" height="300"></canvas>
+                    </div>
+
+                    <!-- Success Rate Over Time -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Success Rate Over Time</h3>
+                        <canvas id="successRate" height="300"></canvas>
+                    </div>
+                </div>
+
+                <!-- Detailed Analytics -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Top Users -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Top Users</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <img src="https://ui-avatars.com/api/?name=John+Doe" class="w-8 h-8 rounded-full">
+                                        <div class="ml-3">
+                                            <p class="text-sm font-medium text-gray-900">John Doe</p>
+                                            <p class="text-sm text-gray-500">2,145 extractions</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-sm text-green-500">+12%</div>
+                                </div>
+                                <!-- More user entries -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Analysis -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Error Analysis</h3>
+                        </div>
+                        <div class="p-6">
+                            <canvas id="errorAnalysis" height="250"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Usage by Plan -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Usage by Plan</h3>
+                        </div>
+                        <div class="p-6">
+                            <canvas id="usageByPlan" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Extraction Trends Chart
+        new Chart(document.getElementById('extractionTrends'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Successful Extractions',
+                    data: [12000, 19000, 15000, 25000, 22000, 30000],
+                    borderColor: '#10B981',
+                    tension: 0.4
+                }, {
+                    label: 'Failed Extractions',
+                    data: [1200, 1900, 1500, 2500, 2200, 3000],
+                    borderColor: '#EF4444',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Success Rate Chart
+        new Chart(document.getElementById('successRate'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Success Rate',
+                    data: [98, 97, 98.5, 99, 98.7, 99.2],
+                    borderColor: '#3B82F6',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        min: 95,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Error Analysis Chart
+        new Chart(document.getElementById('errorAnalysis'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Timeout', 'Invalid Data', 'API Error', 'Other'],
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: ['#3B82F6', '#EF4444', '#F59E0B', '#6B7280']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Usage by Plan Chart
+        new Chart(document.getElementById('usageByPlan'), {
+            type: 'pie',
+            data: {
+                labels: ['Free', 'Professional', 'Enterprise'],
+                datasets: [{
+                    data: [30, 50, 20],
+                    backgroundColor: ['#6B7280', '#3B82F6', '#10B981']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>

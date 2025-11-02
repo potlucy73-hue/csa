@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis - CDMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar (same as dashboard.html) -->
+        <aside class="w-64 bg-blue-800 text-white hidden md:flex flex-col">
+            <!-- Sidebar content same as dashboard.html -->
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <h1 class="text-2xl font-bold text-gray-800">Premium Data Analysis</h1>
+                    <div class="flex space-x-4">
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-file-export mr-2"></i>Export Analysis
+                        </button>
+                        <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                            <i class="fas fa-share-alt mr-2"></i>Share Report
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- Tool Selection -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <!-- Safety Rating Analysis -->
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-shield-alt text-2xl text-blue-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold">Safety Analysis</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Premium</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Deep dive into carrier safety ratings, violations, and trends</p>
+                        <button class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            Start Analysis
+                        </button>
+                    </div>
+
+                    <!-- Risk Assessment -->
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-chart-line text-2xl text-green-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold">Risk Assessment</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Premium</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">AI-powered risk scoring and predictive analytics</p>
+                        <button class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                            Calculate Risk
+                        </button>
+                    </div>
+
+                    <!-- Compliance Monitor -->
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-2xl text-purple-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold">Compliance Monitor</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Premium</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Real-time monitoring of carrier compliance status</p>
+                        <button class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                            Monitor Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analysis Dashboard -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Safety Score Trends -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Safety Score Trends</h3>
+                        <canvas id="safetyTrends" height="300"></canvas>
+                    </div>
+
+                    <!-- Risk Distribution -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Risk Distribution</h3>
+                        <canvas id="riskDistribution" height="300"></canvas>
+                    </div>
+                </div>
+
+                <!-- Detailed Analysis -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Violation Categories -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Top Violation Categories</h3>
+                        </div>
+                        <div class="p-6">
+                            <canvas id="violationCategories" height="250"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Geographic Analysis -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Geographic Distribution</h3>
+                        </div>
+                        <div class="p-6">
+                            <div id="map" class="h-64 bg-gray-100 rounded"></div>
+                        </div>
+                    </div>
+
+                    <!-- Compliance Score -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Compliance Score</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-center">
+                                <div class="relative inline-block">
+                                    <canvas id="complianceScore" width="200" height="200"></canvas>
+                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                        <span class="text-4xl font-bold text-blue-600">94</span>
+                                        <span class="text-gray-500">/100</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-4">Overall Compliance Score</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Initialize charts when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+        });
+
+        function initializeCharts() {
+            // Safety Trends Chart
+            new Chart(document.getElementById('safetyTrends'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Safety Score',
+                        data: [85, 88, 87, 90, 92, 94],
+                        borderColor: '#3B82F6',
+                        tension: 0.4,
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            min: 80,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            // Risk Distribution Chart
+            new Chart(document.getElementById('riskDistribution'), {
+                type: 'bar',
+                data: {
+                    labels: ['Low', 'Medium', 'High'],
+                    datasets: [{
+                        label: 'Carriers',
+                        data: [65, 25, 10],
+                        backgroundColor: ['#10B981', '#FBBF24', '#EF4444']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Violation Categories Chart
+            new Chart(document.getElementById('violationCategories'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Vehicle Maintenance', 'Hours of Service', 'Driver Fitness', 'Other'],
+                    datasets: [{
+                        data: [40, 25, 20, 15],
+                        backgroundColor: ['#3B82F6', '#10B981', '#FBBF24', '#6B7280']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Compliance Score Gauge
+            new Chart(document.getElementById('complianceScore'), {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [94, 6],
+                        backgroundColor: ['#3B82F6', '#E5E7EB'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    cutout: '80%',
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

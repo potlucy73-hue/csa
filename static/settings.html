@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - CDMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar (same as dashboard.html) -->
+        <aside class="w-64 bg-blue-800 text-white hidden md:flex flex-col">
+            <!-- Sidebar content same as dashboard.html -->
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <h1 class="text-2xl font-bold text-gray-800">Settings</h1>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        Save Changes
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <div class="grid grid-cols-12 gap-6">
+                    <!-- Settings Navigation -->
+                    <div class="col-span-12 lg:col-span-3">
+                        <div class="bg-white rounded-lg shadow">
+                            <nav class="space-y-1">
+                                <a href="#profile" class="flex items-center px-4 py-3 text-sm font-medium text-blue-600 bg-blue-50 border-l-4 border-blue-600">
+                                    <i class="fas fa-user-circle mr-3"></i>
+                                    Profile Settings
+                                </a>
+                                <a href="#api" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                    <i class="fas fa-key mr-3"></i>
+                                    API Configuration
+                                </a>
+                                <a href="#extraction" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                    <i class="fas fa-cog mr-3"></i>
+                                    Extraction Settings
+                                </a>
+                                <a href="#notifications" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                    <i class="fas fa-bell mr-3"></i>
+                                    Notifications
+                                </a>
+                                <a href="#team" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                    <i class="fas fa-users mr-3"></i>
+                                    Team Management
+                                </a>
+                                <a href="#billing" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                                    <i class="fas fa-credit-card mr-3"></i>
+                                    Billing & Plan
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="col-span-12 lg:col-span-9 space-y-6">
+                        <!-- Profile Settings -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b border-gray-200">
+                                <h2 class="text-lg font-medium text-gray-900">Profile Settings</h2>
+                                <p class="mt-1 text-sm text-gray-500">Update your account information and preferences.</p>
+                            </div>
+                            <div class="p-6 space-y-6">
+                                <div class="flex items-center">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe" class="w-20 h-20 rounded-full">
+                                    <div class="ml-6">
+                                        <button class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900">
+                                            Change Avatar
+                                        </button>
+                                        <p class="mt-2 text-sm text-gray-500">JPG, GIF or PNG. Max size of 800K</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-6 gap-6">
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label class="block text-sm font-medium text-gray-700">First Name</label>
+                                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                    <div class="col-span-6">
+                                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                                        <input type="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- API Configuration -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b border-gray-200">
+                                <h2 class="text-lg font-medium text-gray-900">API Configuration</h2>
+                                <p class="mt-1 text-sm text-gray-500">Manage your API keys and settings.</p>
+                            </div>
+                            <div class="p-6 space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-900">API Key</h3>
+                                        <p class="text-sm text-gray-500">Use this key to authenticate API requests</p>
+                                    </div>
+                                    <button class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900">
+                                        Generate New Key
+                                    </button>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input type="text" value="sk_test_12345" class="flex-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" readonly>
+                                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+                                        <i class="far fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-medium text-gray-900">API Settings</h3>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <label class="text-sm text-gray-700">Request Timeout</label>
+                                            <p class="text-sm text-gray-500">Maximum time to wait for response</p>
+                                        </div>
+                                        <select class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                            <option>30 seconds</option>
+                                            <option>60 seconds</option>
+                                            <option>90 seconds</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <label class="text-sm text-gray-700">Rate Limiting</label>
+                                            <p class="text-sm text-gray-500">Maximum requests per minute</p>
+                                        </div>
+                                        <select class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                            <option>60 requests</option>
+                                            <option>120 requests</option>
+                                            <option>Unlimited</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Extraction Settings -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b border-gray-200">
+                                <h2 class="text-lg font-medium text-gray-900">Extraction Settings</h2>
+                                <p class="mt-1 text-sm text-gray-500">Configure carrier data extraction preferences.</p>
+                            </div>
+                            <div class="p-6 space-y-6">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <label class="text-sm text-gray-700">Batch Size</label>
+                                            <p class="text-sm text-gray-500">Number of carriers per batch</p>
+                                        </div>
+                                        <select class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                            <option>100 carriers</option>
+                                            <option>500 carriers</option>
+                                            <option>1000 carriers</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <label class="text-sm text-gray-700">Retry Attempts</label>
+                                            <p class="text-sm text-gray-500">Number of retries for failed extractions</p>
+                                        </div>
+                                        <select class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                            <option>3 attempts</option>
+                                            <option>5 attempts</option>
+                                            <option>10 attempts</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <label class="text-sm text-gray-700">Export Format</label>
+                                            <p class="text-sm text-gray-500">Default format for data exports</p>
+                                        </div>
+                                        <select class="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                            <option>CSV</option>
+                                            <option>JSON</option>
+                                            <option>Excel</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-medium text-gray-900">Advanced Settings</h3>
+                                    <div class="space-y-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">Enable automatic retries</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">Save failed extractions log</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">Enable real-time monitoring</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b border-gray-200">
+                                <h2 class="text-lg font-medium text-gray-900">Notification Preferences</h2>
+                                <p class="mt-1 text-sm text-gray-500">Choose how you want to be notified.</p>
+                            </div>
+                            <div class="p-6 space-y-6">
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-medium text-gray-900">Email Notifications</h3>
+                                    <div class="space-y-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">Extraction completed</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">Failed extractions</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">System updates</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-medium text-gray-900">Browser Notifications</h3>
+                                    <div class="space-y-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">Real-time alerts</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" class="h-4 w-4 text-blue-600 rounded">
+                                            <span class="ml-2 text-sm text-gray-700">Status changes</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Settings page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSettings();
+        });
+
+        function initializeSettings() {
+            // Handle save changes
+            document.querySelector('button').addEventListener('click', function() {
+                // Show success message
+                showNotification('Settings saved successfully', 'success');
+            });
+
+            // Handle API key copy
+            document.querySelector('.fa-copy').parentElement.addEventListener('click', function() {
+                const apiKey = document.querySelector('input[readonly]').value;
+                navigator.clipboard.writeText(apiKey).then(function() {
+                    showNotification('API key copied to clipboard', 'success');
+                });
+            });
+        }
+
+        function showNotification(message, type) {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            } text-white`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+    </script>
+</body>
+</html>

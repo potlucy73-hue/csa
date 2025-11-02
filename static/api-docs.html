@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - CDMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar (same as dashboard.html) -->
+        <aside class="w-64 bg-blue-800 text-white hidden md:flex flex-col">
+            <!-- Sidebar content same as dashboard.html -->
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <h1 class="text-2xl font-bold text-gray-800">API Documentation</h1>
+                    <div class="flex space-x-4">
+                        <select class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>v1.0.0</option>
+                            <option>v0.9.0</option>
+                        </select>
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-download mr-2"></i>Download Docs
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto">
+                <div class="flex">
+                    <!-- API Navigation -->
+                    <div class="w-64 bg-white border-r border-gray-200 p-4 space-y-4 overflow-y-auto">
+                        <div class="space-y-2">
+                            <h3 class="text-sm font-semibold text-gray-600 uppercase">Getting Started</h3>
+                            <a href="#introduction" class="block text-sm text-blue-600">Introduction</a>
+                            <a href="#authentication" class="block text-sm text-gray-600 hover:text-blue-600">Authentication</a>
+                            <a href="#rate-limits" class="block text-sm text-gray-600 hover:text-blue-600">Rate Limits</a>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-sm font-semibold text-gray-600 uppercase">Carrier Data</h3>
+                            <a href="#lookup" class="block text-sm text-gray-600 hover:text-blue-600">Lookup Carrier</a>
+                            <a href="#batch" class="block text-sm text-gray-600 hover:text-blue-600">Batch Processing</a>
+                            <a href="#search" class="block text-sm text-gray-600 hover:text-blue-600">Search Carriers</a>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-sm font-semibold text-gray-600 uppercase">Jobs</h3>
+                            <a href="#job-status" class="block text-sm text-gray-600 hover:text-blue-600">Job Status</a>
+                            <a href="#job-results" class="block text-sm text-gray-600 hover:text-blue-600">Job Results</a>
+                        </div>
+                    </div>
+
+                    <!-- API Content -->
+                    <div class="flex-1 p-8 max-w-4xl mx-auto">
+                        <!-- Introduction -->
+                        <section id="introduction" class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Introduction</h2>
+                            <p class="text-gray-600 mb-6">
+                                The Carrier Data Management System (CDMS) API provides programmatic access to carrier data from the FMCSA database.
+                                This API allows you to lookup, search, and batch process carrier information.
+                            </p>
+                            <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                                <pre class="text-white"><code>Base URL: https://api.cdms.com/v1</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Authentication -->
+                        <section id="authentication" class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Authentication</h2>
+                            <p class="text-gray-600 mb-6">
+                                All API requests require authentication using an API key. Include your API key in the request header:
+                            </p>
+                            <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                                <pre class="text-white"><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Rate Limits -->
+                        <section id="rate-limits" class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Rate Limits</h2>
+                            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                                <h3 class="text-xl font-semibold mb-4">Plan Limits</h3>
+                                <table class="min-w-full">
+                                    <thead>
+                                        <tr class="border-b">
+                                            <th class="text-left py-2">Plan</th>
+                                            <th class="text-left py-2">Requests/minute</th>
+                                            <th class="text-left py-2">Daily Limit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="py-2">Free</td>
+                                            <td>60</td>
+                                            <td>1,000</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="py-2">Professional</td>
+                                            <td>300</td>
+                                            <td>10,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2">Enterprise</td>
+                                            <td>Unlimited</td>
+                                            <td>Unlimited</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- Lookup Carrier -->
+                        <section id="lookup" class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Lookup Carrier</h2>
+                            <p class="text-gray-600 mb-6">
+                                Retrieve detailed information about a specific carrier using their MC number.
+                            </p>
+                            <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                                <pre class="text-white"><code>GET /carriers/{mc_number}</code></pre>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                                <h3 class="text-xl font-semibold mb-4">Example Response</h3>
+                                <pre class="language-json"><code>{
+  "mc_number": "123456",
+  "company_name": "Example Trucking LLC",
+  "dot_number": "987654",
+  "operating_status": "AUTHORIZED",
+  "insurance": {
+    "status": "ACTIVE",
+    "expiry_date": "2024-12-31"
+  },
+  "safety_rating": "Satisfactory",
+  "address": {
+    "street": "123 Main St",
+    "city": "Springfield",
+    "state": "IL",
+    "zip": "62701"
+  }
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Batch Processing -->
+                        <section id="batch" class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Batch Processing</h2>
+                            <p class="text-gray-600 mb-6">
+                                Process multiple MC numbers in a single request.
+                            </p>
+                            <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                                <pre class="text-white"><code>POST /carriers/batch
+Content-Type: application/json
+
+{
+  "mc_numbers": ["123456", "234567", "345678"],
+  "options": {
+    "include_safety_data": true,
+    "include_insurance": true
+  }
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- Search Carriers -->
+                        <section id="search" class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Search Carriers</h2>
+                            <p class="text-gray-600 mb-6">
+                                Search for carriers using various criteria.
+                            </p>
+                            <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                                <pre class="text-white"><code>GET /carriers/search?state=IL&safety_rating=satisfactory</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-json.min.js"></script>
+</body>
+</html>

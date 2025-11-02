@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication - CDMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-gradient-to-r from-blue-600 to-purple-600 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+        <!-- Auth Header -->
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-gray-800">Welcome to CDMS</h2>
+                <div class="flex space-x-2">
+                    <button onclick="showAuthForm('login')" class="auth-tab-btn active px-4 py-2 text-sm font-medium rounded-lg" id="login-tab">
+                        Login
+                    </button>
+                    <button onclick="showAuthForm('register')" class="auth-tab-btn px-4 py-2 text-sm font-medium rounded-lg" id="register-tab">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="auth-form active p-6">
+            <form onsubmit="return handleLogin(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" name="email" id="login-email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" name="password" id="login-password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember-me" class="h-4 w-4 text-blue-600 rounded border-gray-300">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-blue-600 hover:text-blue-500">Forgot password?</a>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                            Sign in
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form" class="auth-form hidden p-6">
+            <form onsubmit="return handleRegister(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" id="register-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" name="email" id="register-email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" name="password" id="register-password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Account Type</label>
+                        <select name="accountType" id="register-type" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg">
+                            <option value="basic">Basic (Free)</option>
+                            <option value="premium">Premium ($49/month)</option>
+                            <option value="enterprise">Enterprise (Contact Sales)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                            Create Account
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 px-4 py-2 rounded-lg text-white transform transition-transform duration-300 ease-in-out translate-y-full">
+    </div>
+
+    <script>
+        // Dummy accounts for testing
+        const dummyAccounts = {
+            'basic@test.com': { password: 'basic123', name: 'Basic User', type: 'basic' },
+            'premium@test.com': { password: 'premium123', name: 'Premium User', type: 'premium' },
+            'admin@test.com': { password: 'admin123', name: 'Admin User', type: 'admin' }
+        };
+
+        function showAuthForm(formType) {
+            // Update tab styles
+            document.querySelectorAll('.auth-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('text-gray-600', 'bg-gray-100');
+            });
+            document.getElementById(`${formType}-tab`).classList.add('bg-blue-600', 'text-white');
+            document.getElementById(`${formType}-tab`).classList.remove('text-gray-600', 'bg-gray-100');
+
+            // Show selected form
+            document.querySelectorAll('.auth-form').forEach(form => form.classList.add('hidden'));
+            document.getElementById(`${formType}-form`).classList.remove('hidden');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `fixed bottom-4 right-4 px-4 py-2 rounded-lg text-white transform transition-transform duration-300 ease-in-out`;
+            
+            if(type === 'success') {
+                toast.classList.add('bg-green-500');
+            } else if(type === 'error') {
+                toast.classList.add('bg-red-500');
+            }
+            
+            toast.classList.remove('translate-y-full');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-full');
+            }, 3000);
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            // Check dummy accounts
+            if(dummyAccounts[email] && dummyAccounts[email].password === password) {
+                // Store user info in localStorage
+                localStorage.setItem('userType', dummyAccounts[email].type);
+                localStorage.setItem('userName', dummyAccounts[email].name);
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('isAuthenticated', 'true');
+
+                showToast('Login successful!');
+                setTimeout(() => {
+                    window.location.href = '/static/main.html';
+                }, 1000);
+            } else {
+                showToast('Invalid email or password', 'error');
+            }
+        }
+
+        async function handleRegister(event) {
+            event.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const type = document.getElementById('register-type').value;
+
+            // Add to dummy accounts
+            dummyAccounts[email] = {
+                password: password,
+                name: name,
+                type: type
+            };
+
+            showToast('Registration successful! Please login.');
+            showAuthForm('login');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showAuthForm('login');
+            
+            // Redirect to main page if already logged in
+            if(localStorage.getItem('isAuthenticated')) {
+                window.location.href = '/static/main.html';
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!-- MC Number Range Tab -->
+<div id="range-tab" class="tab-content active">
+    <div class="card">
+        <h2>Extract by MC Number Range</h2>
+        <div class="info-box">
+            <p><strong>🚛 Bulk Data Extraction</strong> Enter a range of MC numbers to extract carrier data.</p>
+        </div>
+        <form id="range-form">
+            <div class="range-inputs">
+                <div class="form-group">
+                    <label for="start-mc">Start MC Number:</label>
+                    <input type="number" id="start-mc" name="start_mc" min="1" max="999999" placeholder="e.g., 40000" required>
+                    <small>Enter the first MC number in the range</small>
+                </div>
+                <div class="form-group">
+                    <label for="end-mc">End MC Number:</label>
+                    <input type="number" id="end-mc" name="end_mc" min="1" max="999999" placeholder="e.g., 50000" required>
+                    <small>Enter the last MC number in the range</small>
+                </div>
+            </div>
+            <div class="range-info" id="range-info" style="display: none;">
+                <div class="info-box info-secondary">
+                    <p><strong>Range Summary:</strong></p>
+                    <p>Total MC Numbers: <span id="total-mc-count">0</span></p>
+                    <p>Estimated Time: <span id="estimated-time">calculating...</span></p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="range-submit-btn">Start Bulk Extraction</button>
+        </form>
+        <div id="range-status" class="status-message"></div>
+        <div class="info-text">
+            The extraction will run in the background. You'll receive the CSV file with all carrier data when it's complete.
+        </div>
+    </div>
+</div>

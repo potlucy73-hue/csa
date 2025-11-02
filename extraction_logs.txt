@@ -1,0 +1,187 @@
+2025-11-02 17:14:39,673 - data_processor - INFO - Extracted 1 unique MC numbers from input
+2025-11-02 17:14:46,997 - database - INFO - Database initialized at extractions.db
+2025-11-02 17:14:46,998 - __main__ - INFO - Starting extraction job job_20251102_171446_6750 with 1 MC numbers
+2025-11-02 17:14:47,023 - database - INFO - Created job job_20251102_171446_6750 with 1 MC numbers
+2025-11-02 17:14:47,112 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/fmcosa_scraper_actor_id/run-sync-get-dataset-items "HTTP/1.1 401 Unauthorized"
+2025-11-02 17:14:47,113 - fmcsa_scraper - WARNING - API extraction failed for MC 329233
+2025-11-02 17:14:47,116 - __main__ - WARNING - Retry 1/3 for MC 329233 after 2s
+2025-11-02 17:14:49,152 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/fmcosa_scraper_actor_id/run-sync-get-dataset-items "HTTP/1.1 401 Unauthorized"
+2025-11-02 17:14:49,152 - fmcsa_scraper - WARNING - API extraction failed for MC 329233
+2025-11-02 17:14:49,152 - __main__ - WARNING - Retry 2/3 for MC 329233 after 4s
+2025-11-02 17:14:53,181 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/fmcosa_scraper_actor_id/run-sync-get-dataset-items "HTTP/1.1 401 Unauthorized"
+2025-11-02 17:14:53,182 - fmcsa_scraper - WARNING - API extraction failed for MC 329233
+2025-11-02 17:14:53,183 - __main__ - WARNING - Retry 3/3 for MC 329233 after 6s
+2025-11-02 17:14:59,220 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/fmcosa_scraper_actor_id/run-sync-get-dataset-items "HTTP/1.1 401 Unauthorized"
+2025-11-02 17:14:59,220 - fmcsa_scraper - WARNING - API extraction failed for MC 329233
+2025-11-02 17:14:59,253 - __main__ - ERROR - Failed to extract MC 329233: No data returned from scraper (after 3 retries)
+2025-11-02 17:14:59,306 - __main__ - INFO - Saved JSON output: output\extracted_carriers_20251102_171459.json
+2025-11-02 17:14:59,310 - __main__ - INFO - Saved failed extractions: output\failed_extractions_20251102_171459.csv
+2025-11-02 17:14:59,311 - __main__ - INFO - Job job_20251102_171446_6750 completed: 0 succeeded, 1 failed
+2025-11-02 17:15:45,817 - database - INFO - Database initialized at extractions.db
+2025-11-02 17:43:11,849 - database - INFO - Database initialized at extractions.db
+2025-11-02 17:44:48,564 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 17:44:48,691 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 200 OK"
+2025-11-02 17:44:48,692 - data_processor - INFO - Extracted 123 unique MC numbers from input
+2025-11-02 17:44:48,693 - github_integration - INFO - Read 123 MC numbers from GitHub repo potlucy73-hue/csa/mc_list.txt
+2025-11-02 17:44:48,693 - __main__ - INFO - Started GitHub extraction job job_20251102_174448_5c4b81ef with 123 MC numbers
+2025-11-02 17:44:48,695 - database - INFO - Database initialized at extractions.db
+2025-11-02 17:44:48,695 - main - INFO - Starting extraction job job_20251102_174448_5c4b81ef with 123 MC numbers
+2025-11-02 17:44:48,728 - database - INFO - Created job job_20251102_174448_5c4b81ef with 123 MC numbers
+2025-11-02 17:45:23,838 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 17:45:23,847 - main - WARNING - Retry 1/3 for MC 720604 after 2s
+2025-11-02 17:45:56,774 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 17:45:56,783 - main - WARNING - Retry 2/3 for MC 720604 after 4s
+2025-11-02 17:46:31,703 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 17:46:31,712 - main - WARNING - Retry 3/3 for MC 720604 after 6s
+2025-11-02 17:47:08,655 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 17:47:08,704 - main - ERROR - Failed to extract MC 720604: No data returned from scraper (after 3 retries)
+2025-11-02 17:47:45,674 - fmcsa_scraper - ERROR - Timeout extracting MC 720605
+2025-11-02 17:47:45,682 - main - WARNING - Retry 1/3 for MC 720605 after 2s
+2025-11-02 17:48:18,642 - fmcsa_scraper - ERROR - Timeout extracting MC 720605
+2025-11-02 17:48:18,650 - main - WARNING - Retry 2/3 for MC 720605 after 4s
+2025-11-02 17:48:53,585 - fmcsa_scraper - ERROR - Timeout extracting MC 720605
+2025-11-02 17:48:53,593 - main - WARNING - Retry 3/3 for MC 720605 after 6s
+2025-11-02 17:49:30,544 - fmcsa_scraper - ERROR - Timeout extracting MC 720605
+2025-11-02 17:49:30,577 - main - ERROR - Failed to extract MC 720605: No data returned from scraper (after 3 retries)
+2025-11-02 17:50:07,579 - fmcsa_scraper - ERROR - Timeout extracting MC 720606
+2025-11-02 17:50:07,588 - main - WARNING - Retry 1/3 for MC 720606 after 2s
+2025-11-02 17:50:40,558 - fmcsa_scraper - ERROR - Timeout extracting MC 720606
+2025-11-02 17:50:40,566 - main - WARNING - Retry 2/3 for MC 720606 after 4s
+2025-11-02 17:51:16,072 - fmcsa_scraper - ERROR - Timeout extracting MC 720606
+2025-11-02 17:51:16,081 - main - WARNING - Retry 3/3 for MC 720606 after 6s
+2025-11-02 17:51:53,046 - fmcsa_scraper - ERROR - Timeout extracting MC 720606
+2025-11-02 17:51:53,084 - main - ERROR - Failed to extract MC 720606: No data returned from scraper (after 3 retries)
+2025-11-02 17:52:30,073 - fmcsa_scraper - ERROR - Timeout extracting MC 720607
+2025-11-02 17:52:30,082 - main - WARNING - Retry 1/3 for MC 720607 after 2s
+2025-11-02 17:53:03,012 - fmcsa_scraper - ERROR - Timeout extracting MC 720607
+2025-11-02 17:53:03,027 - main - WARNING - Retry 2/3 for MC 720607 after 4s
+2025-11-02 17:53:38,015 - fmcsa_scraper - ERROR - Timeout extracting MC 720607
+2025-11-02 17:53:38,026 - main - WARNING - Retry 3/3 for MC 720607 after 6s
+2025-11-02 17:54:02,513 - fmcsa_scraper - ERROR - Error scraping MC 720607: Target page, context or browser has been closed
+2025-11-02 17:54:02,558 - main - ERROR - Failed to extract MC 720607: No data returned from scraper (after 3 retries)
+2025-11-02 19:26:01,155 - auth - INFO - Authentication database initialized
+2025-11-02 19:26:01,213 - payments - INFO - Payments database initialized
+2025-11-02 19:26:01,215 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:27:53,975 - auth - INFO - Authentication database initialized
+2025-11-02 19:27:53,976 - payments - INFO - Payments database initialized
+2025-11-02 19:27:53,977 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:28:09,003 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:28:09,155 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 401 Unauthorized"
+2025-11-02 19:30:14,961 - auth - INFO - Authentication database initialized
+2025-11-02 19:30:14,963 - payments - INFO - Payments database initialized
+2025-11-02 19:30:14,963 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:33:02,527 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:33:02,621 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 401 Unauthorized"
+2025-11-02 19:34:51,421 - auth - INFO - Authentication database initialized
+2025-11-02 19:34:51,422 - payments - INFO - Payments database initialized
+2025-11-02 19:34:51,423 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:36:07,574 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:36:07,678 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 401 Unauthorized"
+2025-11-02 19:45:47,549 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:45:47,627 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 401 Unauthorized"
+2025-11-02 19:45:57,590 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:45:57,666 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 401 Unauthorized"
+2025-11-02 19:47:04,776 - auth - INFO - Authentication database initialized
+2025-11-02 19:47:04,777 - payments - INFO - Payments database initialized
+2025-11-02 19:47:04,779 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:47:24,512 - auth - INFO - Authentication database initialized
+2025-11-02 19:47:24,513 - payments - INFO - Payments database initialized
+2025-11-02 19:47:24,515 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:48:11,615 - auth - INFO - Authentication database initialized
+2025-11-02 19:48:11,616 - payments - INFO - Payments database initialized
+2025-11-02 19:48:11,618 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:49:02,599 - api - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:49:02,771 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 200 OK"
+2025-11-02 19:49:02,773 - data_processor - INFO - Extracted 123 unique MC numbers from input
+2025-11-02 19:49:02,773 - github_integration - INFO - Read 123 MC numbers from GitHub repo potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:49:02,773 - api - INFO - Started GitHub extraction job job_20251102_194902_abe9de34 with 123 MC numbers
+2025-11-02 19:49:02,775 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:49:02,776 - main - INFO - Starting extraction job job_20251102_194902_abe9de34 with 123 MC numbers
+2025-11-02 19:49:02,819 - database - INFO - Created job job_20251102_194902_abe9de34 with 123 MC numbers
+2025-11-02 19:49:02,820 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Connection.run() done, defined at C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_connection.py:268> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_connection.py", line 275, in run
+    await self._transport.connect()
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_transport.py", line 135, in connect
+    raise exc
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_transport.py", line 123, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\asyncio\base_events.py", line 1676, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\asyncio\base_events.py", line 498, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2025-11-02 19:49:02,844 - api - ERROR - Error in extraction job job_20251102_194902_abe9de34: 
+2025-11-02 19:55:22,684 - auth - INFO - Authentication database initialized
+2025-11-02 19:55:22,685 - payments - INFO - Payments database initialized
+2025-11-02 19:55:22,686 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:55:44,117 - api - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:55:44,309 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 200 OK"
+2025-11-02 19:55:44,311 - data_processor - INFO - Extracted 123 unique MC numbers from input
+2025-11-02 19:55:44,311 - github_integration - INFO - Read 123 MC numbers from GitHub repo potlucy73-hue/csa/mc_list.txt
+2025-11-02 19:55:44,312 - api - INFO - Started GitHub extraction job job_20251102_195544_ff206ece with 123 MC numbers
+2025-11-02 19:55:44,314 - database - INFO - Database initialized at extractions.db
+2025-11-02 19:55:44,315 - main - INFO - Starting extraction job job_20251102_195544_ff206ece with 123 MC numbers
+2025-11-02 19:55:44,347 - database - INFO - Created job job_20251102_195544_ff206ece with 123 MC numbers
+2025-11-02 19:55:44,349 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Connection.run() done, defined at C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_connection.py:268> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_connection.py", line 275, in run
+    await self._transport.connect()
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_transport.py", line 135, in connect
+    raise exc
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\site-packages\playwright\_impl\_transport.py", line 123, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\asyncio\base_events.py", line 1676, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "C:\hostedtoolcache\windows\Python\3.9.13\x64\lib\asyncio\base_events.py", line 498, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2025-11-02 19:55:44,351 - api - ERROR - Error in extraction job job_20251102_195544_ff206ece: 
+2025-11-02 20:00:23,471 - auth - INFO - Authentication database initialized
+2025-11-02 20:00:23,472 - payments - INFO - Payments database initialized
+2025-11-02 20:00:23,473 - database - INFO - Database initialized at extractions.db
+2025-11-02 20:20:31,385 - auth - INFO - Authentication database initialized
+2025-11-02 20:20:31,386 - payments - INFO - Payments database initialized
+2025-11-02 20:20:31,387 - database - INFO - Database initialized at extractions.db
+2025-11-02 20:20:50,259 - auth - INFO - Authentication database initialized
+2025-11-02 20:20:50,259 - payments - INFO - Payments database initialized
+2025-11-02 20:20:50,261 - database - INFO - Database initialized at extractions.db
+2025-11-02 20:21:03,352 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 20:21:03,518 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 200 OK"
+2025-11-02 20:21:03,519 - data_processor - INFO - Extracted 123 unique MC numbers from input
+2025-11-02 20:21:03,519 - github_integration - INFO - Read 123 MC numbers from GitHub repo potlucy73-hue/csa/mc_list.txt
+2025-11-02 20:21:03,520 - __main__ - INFO - Started GitHub extraction job job_20251102_202103_4a91a840 with 123 MC numbers
+2025-11-02 20:21:03,522 - database - INFO - Database initialized at extractions.db
+2025-11-02 20:21:03,522 - main - INFO - Starting extraction job job_20251102_202103_4a91a840 with 123 MC numbers
+2025-11-02 20:21:03,555 - database - INFO - Created job job_20251102_202103_4a91a840 with 123 MC numbers
+2025-11-02 20:21:03,556 - __main__ - ERROR - Error in extraction job job_20251102_202103_4a91a840: name 'FMCSAScraper' is not defined
+2025-11-02 20:45:15,397 - auth - INFO - Authentication database initialized
+2025-11-02 20:45:15,398 - payments - INFO - Payments database initialized
+2025-11-02 20:45:15,400 - database - INFO - Database initialized at extractions.db
+2025-11-02 20:46:14,289 - __main__ - INFO - Reading MC list from GitHub repo: potlucy73-hue/csa/mc_list.txt
+2025-11-02 20:46:14,432 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/potlucy73-hue/csa/contents/mc_list.txt?ref=main "HTTP/1.1 200 OK"
+2025-11-02 20:46:14,434 - data_processor - INFO - Extracted 123 unique MC numbers from input
+2025-11-02 20:46:14,434 - github_integration - INFO - Read 123 MC numbers from GitHub repo potlucy73-hue/csa/mc_list.txt
+2025-11-02 20:46:14,434 - __main__ - INFO - Started GitHub extraction job job_20251102_204614_219a8415 with 123 MC numbers
+2025-11-02 20:46:14,436 - database - INFO - Database initialized at extractions.db
+2025-11-02 20:46:14,437 - main - INFO - Starting extraction job job_20251102_204614_219a8415 with 123 MC numbers
+2025-11-02 20:46:14,468 - database - INFO - Created job job_20251102_204614_219a8415 with 123 MC numbers
+2025-11-02 20:46:49,793 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 20:46:49,803 - main - WARNING - Retry 1/3 for MC 720604 after 2s
+2025-11-02 20:47:22,783 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 20:47:22,791 - main - WARNING - Retry 2/3 for MC 720604 after 4s
+2025-11-02 20:47:57,782 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 20:47:57,790 - main - WARNING - Retry 3/3 for MC 720604 after 6s
+2025-11-02 20:48:34,808 - fmcsa_scraper - ERROR - Timeout extracting MC 720604
+2025-11-02 20:48:34,855 - main - ERROR - Failed to extract MC 720604: No data returned from scraper (after 3 retries)
+2025-11-02 20:49:00,245 - fmcsa_scraper - ERROR - Error scraping MC 720605: Target page, context or browser has been closed
+2025-11-02 20:49:00,256 - main - WARNING - Retry 1/3 for MC 720605 after 2s
+2025-11-02 20:57:14,879 - auth - INFO - Authentication database initialized
+2025-11-02 20:57:14,880 - payments - INFO - Payments database initialized
+2025-11-02 20:57:14,882 - database - INFO - Database initialized at extractions.db

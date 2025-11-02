@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts & Monitoring - CDMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar (same as dashboard.html) -->
+        <aside class="w-64 bg-blue-800 text-white hidden md:flex flex-col">
+            <!-- Sidebar content same as dashboard.html -->
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <h1 class="text-2xl font-bold text-gray-800">Premium Alerts & Monitoring</h1>
+                    <div class="flex space-x-4">
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-bell mr-2"></i>Configure Alerts
+                        </button>
+                        <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                            <i class="fas fa-envelope mr-2"></i>Manage Notifications
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- Alert Summary -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                    <!-- Critical Alerts -->
+                    <div class="bg-red-100 p-6 rounded-lg border-l-4 border-red-600">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-red-600 font-medium">Critical Alerts</p>
+                                <p class="text-2xl font-bold text-red-800">3</p>
+                            </div>
+                            <i class="fas fa-exclamation-circle text-3xl text-red-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- High Priority -->
+                    <div class="bg-orange-100 p-6 rounded-lg border-l-4 border-orange-600">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-orange-600 font-medium">High Priority</p>
+                                <p class="text-2xl font-bold text-orange-800">7</p>
+                            </div>
+                            <i class="fas fa-exclamation-triangle text-3xl text-orange-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- Medium Priority -->
+                    <div class="bg-yellow-100 p-6 rounded-lg border-l-4 border-yellow-600">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-yellow-600 font-medium">Medium Priority</p>
+                                <p class="text-2xl font-bold text-yellow-800">12</p>
+                            </div>
+                            <i class="fas fa-flag text-3xl text-yellow-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- Low Priority -->
+                    <div class="bg-blue-100 p-6 rounded-lg border-l-4 border-blue-600">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-blue-600 font-medium">Low Priority</p>
+                                <p class="text-2xl font-bold text-blue-800">25</p>
+                            </div>
+                            <i class="fas fa-info-circle text-3xl text-blue-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert Filters -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="p-4 border-b border-gray-200">
+                        <div class="flex flex-wrap items-center gap-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-gray-700">Filter by:</span>
+                                <select class="form-select rounded border-gray-300">
+                                    <option>All Priorities</option>
+                                    <option>Critical</option>
+                                    <option>High</option>
+                                    <option>Medium</option>
+                                    <option>Low</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-gray-700">Date Range:</span>
+                                <select class="form-select rounded border-gray-300">
+                                    <option>Last 24 Hours</option>
+                                    <option>Last 7 Days</option>
+                                    <option>Last 30 Days</option>
+                                    <option>Custom Range</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-gray-700">Status:</span>
+                                <select class="form-select rounded border-gray-300">
+                                    <option>All Status</option>
+                                    <option>Active</option>
+                                    <option>Resolved</option>
+                                    <option>Acknowledged</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Alerts Table -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alert Type</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- Critical Alert -->
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Critical
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900">Safety Score Drop</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Carrier ABC123 safety score dropped below threshold</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">5 mins ago</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                        Active
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium">
+                                    <button class="text-blue-600 hover:text-blue-900 mr-3">Acknowledge</button>
+                                    <button class="text-red-600 hover:text-red-900">Resolve</button>
+                                </td>
+                            </tr>
+
+                            <!-- High Priority Alert -->
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
+                                        High
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900">Compliance Warning</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Multiple violations detected for carrier XYZ789</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">1 hour ago</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                        Acknowledged
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium">
+                                    <button class="text-red-600 hover:text-red-900">Resolve</button>
+                                </td>
+                            </tr>
+
+                            <!-- Medium Priority Alert -->
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                        Medium
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900">Data Update</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Carrier information update pending for DEF456</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">3 hours ago</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Resolved
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium">
+                                    <button class="text-gray-600 hover:text-gray-900">View Details</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Add any required JavaScript for alert management
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize alert counters and filters
+            initializeAlerts();
+        });
+
+        function initializeAlerts() {
+            // Add alert management functionality here
+            console.log('Alert system initialized');
+        }
+    </script>
+</body>
+</html>
